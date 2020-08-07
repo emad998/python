@@ -1,0 +1,89 @@
+Book.objects.create(title="C Sharp", desc="anticipated book")
+
+Book.objects.create(title="Java", desc="hard")
+
+Book.objects.create(title="Python", desc="lovely language")
+
+Book.objects.create(title="PHP", desc="meh")
+
+Book.objects.create(title="Ruby", desc="nice")
+
+Author.objects.create(first_name="Jane", last_name="Austen")
+<Author: Author object (1)>
+>>> Author.objects.create(first_name="Emily", last_name="Dickinson")
+<Author: Author object (2)>
+>>> Author.objects.create(first_name="Fyodor", last_name="Dostoevsky)
+  File "<console>", line 1
+    Author.objects.create(first_name="Fyodor", last_name="Dostoevsky)
+                                                                    ^
+SyntaxError: EOL while scanning string literal
+>>> Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")
+<Author: Author object (3)>
+>>> Author.objects.create(first_name="William", last_name="Shakespeare")
+<Author: Author object (4)>
+>>> Author.objects.create(first_name="Lau", last_name="Tzu")
+<Author: Author object (5)>
+>>> exit()
+
+
+
+>>> c = Book.objects.get(id=1)
+>>> c.title="C#"
+>>> c.save()
+
+
+
+>>> author4 = Author.objects.get(id=4)
+>>> author4.first_name="Bill"
+>>> author4.save()
+
+>>> author1 = Author.objects.get(id=1)
+>>> book1 = Book.objects.get(id=1)
+>>> book2= Book.objects.get(id=2)
+>>> author1.books.add(book1,book2)
+
+>>> book3 = Book.objects.get(id=3)
+>>> author2.books.add(book1,book2,book3)
+
+>>> author3= Author.objects.get(id=3)
+>>> book4= Book.objects.get(id=4)
+>>> author3.books.add(book1,book2,book3,book4)
+
+
+>>> author4 = Author.objects.get(id=4)
+>>> author4.books.all()
+<QuerySet []>
+>>> book5= Book.objects.get(id=5)
+>>> author4.books.add(book1,book2,book3,book4,book5)
+
+
+
+>>> for author in book3.authors.all():
+...     print(author.first_name)
+... 
+Emily
+Fyodor
+Bill
+>>>
+
+>>> book3.authors.remove(author2)
+
+>>> author5 = Author.objects.get(id=5)
+>>> author5.books.add(book2)
+
+...     print(book.title)
+... 
+C#
+Java
+Python
+PHP
+>>>
+
+>>> for author in book5.authors.all():
+...     print(author.first_name)
+... 
+Bill
+>>>
+
+
+

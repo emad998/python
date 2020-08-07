@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Intro</title>
+    <style>
+        body {
+            background-color: {{ color }};
+        }
+    </style>
+</head>
+<body>
+    <h1>Session Intro</h1>
+    <form action="/process-form" method="POST">
+        {% csrf_token %}
+        <select name="fave_color">
+            <option value="red">red</option>
+            <option value="green">green</option>
+            <option value="yellow">yellow</option>
+            <option value="pink">pink</option>
+            <option value="purple">purple</option>
+            <option value="blue">blue</option>
+            <option value="silver">silver</option>
+        </select>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+h1 {
+    color: pink;
+    text-align: center;
+}
+
+.farm {
+    background-color: blue;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    padding-bottom: 7px;
+    
+}
+
+.left-box {
+    margin-left: 4%;
+}
+
+h3 {
+    margin-left: 4%;
+}
+
+.info {
+    width: 70%;
+    height: 400px;
+    border: 1px solid;
+    background-color: red;
+    margin-left: 4%;
+}

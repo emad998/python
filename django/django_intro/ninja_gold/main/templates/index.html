@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+        <H1>Your Gold: {{ request.session.gold }}</H1>
+        <div class="reset">
+            <form action="/reset">
+                <button>Reset</button>
+            </form>
+        </div>
+        <div class="farm left-box">
+            <h3>Farm</h3>
+            <p>(earns 10-20 golds)</p>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <button name="farm" value="farm">Find Gold</button>
+            </form>
+            
+        </div>
+
+        <div class="farm">
+            <h3>Cave</h3>
+            <p>(earns 5-10 golds)</p>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <button name="farm" value="cave">Find Gold</button>
+            </form>
+            
+        </div>
+
+        <div class="farm">
+            <h3>House</h3>
+            <p>(earns 2-5 golds)</p>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <button name="farm" value="house">Find Gold</button>
+            </form>
+            
+        </div>
+
+        <div class="farm">
+            <h3>Casino</h3>
+            <p>(earns/takes 0-50 golds)</p>
+            <form action="/process_money" method="POST">
+                {% csrf_token %}
+                <button name="farm" value="casino">Find Gold</button>
+            </form>
+        </div>
+
+        <h3>Activites:</h3>
+        <div class="info">
+            <ul>
+                {% for item in request.session.p %}
+                <li>{{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </div>
+</body>
+</html>

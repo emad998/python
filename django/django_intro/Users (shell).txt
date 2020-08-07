@@ -1,0 +1,29 @@
+from main.models import User
+
+
+User.objects.create(first_name="Emad", last_name="Hanna", email="emad@dojo.com", age=33)
+
+User.objects.create(first_name="indi", last_name="boteju", email="indi@dojo.com", age=34)
+
+User.objects.create(first_name="beth", last_name="johnson", email="beth@dojo.com", age=20)
+
+User.objects.all()
+
+User.objects.last()
+
+User.objects.first()
+
+beth = User.objects.get(id=3)
+
+beth = User.objects.get(id=3)
+
+beth = User.objects.get(id=3)
+
+indi = User.objects.get(id=2)
+
+indi.delete()
+
+
+User.objects.all().order_by("first_name")
+
+User.objects.all().order_by("first_name")  

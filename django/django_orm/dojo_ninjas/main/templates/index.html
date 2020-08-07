@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Add Dojo</h1>
+    <!-- adding dojo form -->
+    <form action="/add_dojo" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="nameLabel">Name</label>
+          <input type="text" class="form-control col-3" name="nameLabel" placeholder="Enter Name">
+       
+        </div>
+        <div class="form-group">
+          <label for="cityLabel">City</label>
+          <input type="text" class="form-control col-3" name="cityLabel" placeholder="City">
+        </div>
+        <div class="form-group">
+            <label for="stateLabel">State</label>
+            <input type="text" class="form-control col-3" name="stateLabel" placeholder="State">
+          </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+      <h1>Add Ninja</h1>
+      <!-- adding ninja -->
+      <form action="/add_ninja" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control col-3" name="firstName" placeholder="First name">
+       
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control col-3" name="lastName" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label for="dojoName">Example select</label>
+            <select class="form-control col-3" name="dojoName">
+              {% for dojo in all_dojos %}
+                <option value="{{ dojo.id }}">{{ dojo.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
+
+
+
+
+    <h1>Dojos:</h1>
+
+    <ul>
+        {% for dojo in all_dojos %}
+          <li>{{ dojo.name }}
+            <ul>
+              <!-- looping through each author's books! -->
+              {% for ninja in dojo.ninjas.all %}	
+                <li><em>{{ ninja.first_name }} {{ ninja.last_name }}</em></li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+
+    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  </body>
+</html>

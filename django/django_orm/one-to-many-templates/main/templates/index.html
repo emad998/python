@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+</head>
+<body>
+  <h1>Users</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Favorite Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in all_users %}
+        <tr>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.fav_number }}</td>
+          <td>
+            <a href="/users/{{ user.id }}">View</a> |
+            <a href="/users/{{ user.id }}/delete">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <form action="/add-user" method="POST">
+    {% csrf_token %}
+    <div>
+      <label>First Name</label>
+      <input type="text" name="first_name">
+    </div>
+    <div>
+      <label>Last Name</label>
+      <input type="text" name="last_name">
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="email" name="email">
+    </div>
+    <div>
+      <label>Favorite Number</label>
+      <input type="number" name="fav_number">
+    </div>
+    <div>
+      <label>Motto</label>
+      <textarea name="motto" id="" cols="30" rows="10"></textarea>
+    </div>
+
+    <button>Submit</button>
+  </form>
+</body>
+</html>

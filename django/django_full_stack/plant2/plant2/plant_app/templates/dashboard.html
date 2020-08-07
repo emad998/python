@@ -1,0 +1,76 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Plant</title>
+</head>
+<style>
+    body {
+        background-image: url("https://cdn10.phillymag.com/wp-content/uploads/sites/3/2019/09/houseplants-vertical.jpg");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+</style>
+
+
+
+
+<body>
+    <div class="container">
+
+        
+        <form action="/createPlantPage" method="POST">
+            {% csrf_token %}
+            
+            <button type="submit" class="btn btn-primary">Create a Plant</button>
+          </form>
+
+
+          <form action="/dashboardAll" method="POST">
+            {% csrf_token %}
+            
+            <button type="submit" class="btn btn-primary">Dashboard All</button>
+          </form>
+
+        <div class="header">
+            <h1>Hello, {{ request.session.userName }}</h1>
+            <h1>Indoor Plant Guide</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Plants:</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/fern">Ferns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/succulent">Succulent</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/vine">Vine</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/tree">Tree</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <a class="btn btn-danger" href="/logout">Logout</a>
+            </div>
+        </nav>
+    </div>
+
+</body>
+
+</html>

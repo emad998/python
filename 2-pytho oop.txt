@@ -1,0 +1,162 @@
+import random
+
+# Traits - Attributes (Characteristics):
+# hair color
+# eye color
+# height
+# weight
+# age
+# ethnicity
+# gender
+# name
+
+# Activities - Methods
+# play music
+# run
+# go swimming
+# hiking
+# do yoga
+# play table tennis
+# sleep
+# dye hair
+# have birthday
+# change name
+
+class Person:
+    i = 1
+
+    def __init__(self, name, hair_color = "black", gender_input = "male", age = 25):
+        self.i = 5
+        self.name = name
+        self.hair_color = hair_color
+        self.gender = gender_input
+        self.age = age
+
+    def __str__(self):
+        return f"Name: {self.name}; Hair Color: {self.hair_color}; Gender: {self.gender}; Age: {self.age}"
+
+    def have_birthday(self):
+        self.age += 1
+        return self
+
+    def change_name(self, new_name):
+        self.name = new_name
+        return self
+        # implicitly returns None
+
+    def dye_hair(self, new_hair_color):
+        self.hair_color = new_hair_color
+        return self
+
+yuri = Person("Yuri Chalmers", "black", "female", 28)
+josh = Person("Josh Martinez", "dark brown", "male", 29)
+hugo = Person("Hugo Vega", "dark brown", "male", 19)
+
+hugo.height = 6
+print(hugo.i)
+
+bob_smith = Person(name="Bob Smith", age=random.randint(20, 35))
+
+bob_smith.change_name("Mike Jones").dye_hair("blonde")
+
+hugo.have_birthday()
+
+print(bob_smith)
+print(yuri)
+print(josh)
+print(hugo)
+
+
+
+
+
+explained
+
+
+# we're making the entire "random" package available to our code
+import random
+
+# Traits - Attributes (Characteristics):
+# hair color
+# eye color
+# height
+# weight
+# age
+# ethnicity
+# gender
+# name
+
+# Activities - Methods
+# play music
+# run
+# go swimming
+# hiking
+# do yoga
+# play table tennis
+# sleep
+# dye hair
+# have birthday
+# change name
+
+class Person:
+    # this is a "class" attribute
+    i = 1
+
+    # creates the __init__ method
+    # self refers to the object being initialized
+    # default values denoted by = "..."
+    # this method runs whenever we create an object of the Person class
+    def __init__(self, name, hair_color = "black", gender_input = "male", age = 25):
+        self.i = 5
+        self.name = name
+        self.hair_color = hair_color
+        self.gender = gender_input
+        self.age = age
+        self.hobbies = []
+
+    def add_hobby(self, hobby):
+        self.hobbies.append(hobby)
+        return self
+
+    def __str__(self):
+        my_str = f"Name: {self.name}; Hair Color: {self.hair_color}; Gender: {self.gender}; Age: {self.age}; Hobbies: "
+        # arr.forEach() in JavaScript
+        # _.forEach(arr, callback)
+        for hobby in self.hobbies:
+            my_str += hobby + ", "
+
+        return my_str
+
+    def have_birthday(self):
+        self.age += 1
+        return self
+
+    # every time we see "self," this refers to the Person instance
+    def change_name(self, new_name):
+        self.name = new_name
+        return self
+        # implicitly returns None
+
+    def dye_hair(self, new_hair_color):
+        self.hair_color = new_hair_color
+        return self
+
+yuri = Person("Yuri Chalmers", "black", "female")
+josh = Person("Josh Martinez", "dark brown", "male", 29)
+# using named arguments below
+hugo = Person(name="Hugo Vega", gender_input="male", hair_color="dark brown", age=19)
+
+# we're adding an extra attribute "height" that our other instances don't have
+hugo.height = 6
+print(hugo.i)
+
+bob_smith = Person(name="Bob Smith", age=random.randint(20, 35))
+
+bob_smith.change_name("Mike Jones").dye_hair("blonde").add_hobby("table tennis")
+
+hugo.have_birthday().add_hobby("coding")
+
+print(bob_smith)
+print(yuri)
+print(josh)
+print(hugo)

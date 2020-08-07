@@ -1,0 +1,84 @@
+# Hi, my name is Morley Tatro and I have been coding seriously for 8 years. This weekend, I did 3 of my favorite hobbies: played guitar, played table tennis, and went mountain biking. I needed to buy some things at the store. Not wanting to wear a mask, I ordered the following from Ralphs: 1 head of lettuce at a price of $1.99 for a total of $1.99, 6 oranges, ... The totals were ? items and ?$.
+
+my_str = ""
+
+first_name = "Morley"
+last_name = "Tatro"
+years_coding = 8
+
+# first_name + " " + last_name
+# this is the same as my_str = my_str + ...
+# like MadLibs
+my_str += f"Hi, my name is {first_name} {last_name} and I have been coding seriously for {years_coding} years."
+
+favorite_hobbies = [
+    "played guitar",
+    "played table tennis",
+    "went mountain biking"
+]
+
+# in JavaScript, this would look like ` This weekend... ${favoriteHobbies.length}`
+my_str += f" This weekend, I did {len(favorite_hobbies)} of my favorite hobbies: "
+
+# for hobby in favorite_hobbies[0:-1]:
+#     my_str += hobby + ', '
+
+# my_str += f"and {favorite_hobbies[-1]}."
+
+hobbies_len = len(favorite_hobbies)
+
+str(5) # returns "5"
+f"somethidghoipghda {5}"
+"somethdighsaioghpodsa " + str(5)
+
+# for(var i = 0; i < hobbies.length; i += 2)
+
+# range(3) returns tuple with 0, 1, and 2 in it
+for i in range(hobbies_len):
+    if i == hobbies_len - 1:
+        my_str += "and " + favorite_hobbies[i] + "."
+    else:
+        my_str += favorite_hobbies[i] + ", "
+
+my_str += "I needed to buy some things at the store. Not wanting to wear a mask, I ordered the following from Ralphs: "
+
+# var items = [...]
+items = [
+    {
+        "name": "milk",
+        "price": 199,
+        "quantity": 1
+    },
+    {
+        "name": "eggs",
+        "price": 300,
+        "quantity": 3
+    },
+    {
+        "name": "Red Bull",
+        "price": 399,
+        "quantity": 5
+    }
+]
+
+# in JavaScript this would function createItemString(item) {}
+def create_item_string(my_dict):
+    return f"{my_dict['quantity']} of {my_dict['name']} at a price of ${my_dict['price'] / 100} for a total of ${(my_dict['price'] * my_dict['quantity']) / 100}"
+
+total = 0
+
+# in JS, this would be for(var i = 0; i < items.length; i++) {}
+for index in range(len(items)):
+    single_item = items[index]
+    item_str = create_item_string(single_item)
+
+    total += single_item["price"] * single_item["quantity"]
+
+    if index < len(items) - 1:
+        my_str += item_str + ", "
+    else:
+        my_str += f"and {item_str}."
+
+my_str += f" The total for everything was ${total / 100}."
+
+print(my_str)

@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Trip</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hello {{ request.session.user_name }}</h1>
+
+        <h3>Destination</h3>
+        <p>{{appointments.tasks}}</p>
+
+        <h3>Date</h3>
+        <p>{{appointments.date}}</p>
+
+        <h3>Plan</h3>
+        <p>{{appointments.status}}</p>
+
+        <h3>Created at</h3>
+        <p>{{appointments.created_at}}</p>
+
+        <h3>Updated At</h3>
+        <p>{{appointments.updated_at}}</p>
+
+        <h3>Created By</h3>
+        <p>{{appointments.user.first_name}}</p>
+
+        <a href="/logout">Logout</a>
+        <a href="/dashboard" class="btn btn-primary">Cancel</a>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ this_user.first_name }} {{ this_user.last_name }}</title>
+</head>
+<body>
+  <a href="/">Go Home</a>
+
+  <h1>{{ this_user.first_name }} {{ this_user.last_name }}</h1>
+  <p>Email: {{ this_user.email }}</p>
+  <p>Favorite Number: {{ this_user.fav_number }}</p>
+  <p>Motto: {{ this_user.motto }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Release Date</th>
+        <th>Genre</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for album in this_user.albums.all %}
+        <tr>
+          <td>{{ album.artist }}</td>
+          <td>{{ album.title }}</td>
+          <td>{{ album.release_date }}</td>
+          <td>{{ album.genre }}</td>
+          <td></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</body>
+</html>

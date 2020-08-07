@@ -1,0 +1,54 @@
+Dojo.objects.create(name="orange county", city="costa mesa", state="ca")
+
+Dojo.objects.create(name="ada", city="boise", state="id")
+
+Dojo.objects.create(name="los angeles", city="burbank", state="ca")
+
+dojo = Dojo.objects.get(id=1)
+dojo.delete()
+dojo = Dojo.objects.get(id=1)
+dojo.delete()
+dojo = Dojo.objects.get(id=1)
+dojo.delete()
+
+
+Dojo.objects.create(name="orange county", city="costa mesa", state="ca")
+Dojo.objects.create(name="orange county", city="costa mesa", state="ca")
+Dojo.objects.create(name="orange county", city="costa mesa", state="ca")
+
+
+
+my_ninja = Ninja.objects.create(first_name="emad", last_name="hanna", dojo=Dojo.objects.get(id=4))
+>>> my_ninja = Ninja.objects.create(first_name="indi", last_name="boteju", dojo=Dojo.objects.get(id=5))
+>>> my_ninja = Ninja.objects.create(first_name="josh", last_name="brannon", dojo=Dojo.objects.get(id=6))
+
+my_ninja = Ninja.objects.create(first_name="arnold", last_name="Agboro", dojo=Dojo.objects.get(id=4))
+my_ninja = Ninja.objects.create(first_name="donald", last_name= "leblanc", dojo=Dojo.objects.get(id=4))
+my_ninja = Ninja.objects.create(first_name="jenny", last_name="nguyen", dojo=Dojo.objects.get(id=5))
+my_ninja = Ninja.objects.create(first_name="jason", last_name="brady", dojo=Dojo.objects.get(id=5))
+my_ninja = Ninja.objects.create(first_name="ryan", last_name="kim", dojo=Dojo.objects.get(id=6)) 
+my_ninja = Ninja.objects.create(first_name="damien", last_name="simmons", dojo=Dojo.objects.get(id=6)) 
+
+
+>>> ninja = Ninja.objects.get(id=9)
+>>> print(dojo)
+Dojo object (None)
+>>> print(ninja.dojo)
+Dojo object (6)
+>>> print(ninja.dojo.name)
+los angeles
+>>>
+
+
+exit()
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+python manage.py shell
+
+from main.models import *
+
+>>> Dojo.objects.create(name="north", city="seattle", state="WA")
+<Dojo: Dojo object (7)>

@@ -1,0 +1,102 @@
+# class - blueprints
+# objects - instances
+# vehicle class
+# car class
+# person class
+
+class Vehicle:
+    def __init__(self, num_wheels, num_seats, num_doors):
+        self.num_wheels = num_wheels
+        self.num_seats = num_seats
+        self.num_doors = num_doors
+
+    def print_num_doors(self):
+        print(self.num_doors)
+
+# Car is inheriting from the Vehicle class
+class Car(Vehicle):
+    def __init__(
+        self,
+        make,
+        model,
+        color,
+        year,
+        num_wheels = 4,
+        num_seats = 5,
+        num_doors = 4,
+        mileage = 0
+    ):
+        # we're getting a reference to the parent class and calling its __init__ method
+        super().__init__(num_wheels, num_seats, num_doors)
+
+        # these attributes are assigned to values we will take in as parameters
+        self.make = make
+        self.model = model
+        self.color = color
+        self.year = year
+        self.mileage = mileage
+
+    # this is a method!
+    # we wrote this so when we print our objects, they show us useful info
+    def __str__(self):
+        return f"Make: {self.make}; Model: {self.model}; Color: {self.color}"
+
+class Person:
+    def __init__(self, name, money = 30000):
+        self.name = name
+        self.money = money
+        self.cars = []
+
+    def buy_car(self, price, car):
+        if self.money >= price:
+            self.money -= price
+            self.cars.append(car)
+            return self
+        else:
+            print("insufficient funds!")
+            return False
+
+    def sell_car(self, price, car, buyer):
+        # this will return a boolean, telling us whether or not the buyer can afford it
+        if buyer.buy_car(price, car):
+            self.money += price
+            self.cars.remove(car)
+            # print("these are the remaining cars", self.cars)
+        else:
+            print("sorry, the buyer couldn't afford it")
+
+    def print_cars(self):
+        # if we need the index, we could do this:
+        # for i in range(len(self.cars)):
+        #     print(self.cars[i])
+        for car in self.cars:
+            print(car)
+
+tundra = Car("Toyota", "Tundra", "gray", 2020, num_seats=6)
+silverado = Car("Chevrolet", "Silverado", "white", 2020)
+
+# print(tundra)
+tundra.print_num_doors()
+
+josh = Person("Josh Martinez", 100000)
+indi = Person("Indika Boteju", 150000)
+
+# we're invoking a method (buy_car)
+josh.buy_car(40000, tundra).buy_car(50000, silverado)
+
+# for car in josh.cars:
+#     print(car)
+
+# print(josh.money)
+
+josh.sell_car(90000, silverado, indi)
+# indi.buy_car(90000, silverado)
+
+print(josh.money)
+# print_cars is going to iterate through the list and print each one
+josh.print_cars()
+
+print("Indi's money", indi.money)
+indi.print_cars()
+# for car in indi.cars:
+#     print(car)
